@@ -1,15 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Window
     x:Class="Handbook.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Handbook"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     Title="Handbook">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <NavigationView
+        x:Name="MainNavigationView"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False"
+        Margin="10,30,0,0"
+        SelectionChanged="MainNavigationView_SelectionChanged"
+        PaneDisplayMode="Auto"
+        PaneTitle="Фізичне зберігання даних">
+        
+        <NavigationView.MenuItems>
+            <NavigationViewItem
+                Content="Довідник"
+                IsSelected="True"
+                Tag="HanbookPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE736;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+            <NavigationViewItem Content="Додати статтю" Tag="AddTextPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE710;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Тестові завдання" Tag="TestingPage">
+                <NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xE70F;" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+
+        </NavigationView.MenuItems>
+
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem
+                Content="Налаштування"
+                Icon="Setting"
+                Tag="SettingsPage">
+            </NavigationViewItem>
+        </NavigationView.FooterMenuItems>
+
+        <Frame x:Name="ContentFrame" />
+    </NavigationView>
+
 </Window>
